@@ -5,20 +5,20 @@ const norrisJokes = function (e) {
   xhr.open("GET", "https://api.chucknorris.io/jokes/random");
 
   xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        const divJokes = document.getElementById("joke");
-        const data = JSON.parse(this.responseText);
+    if (this.readyState === 4 && this.status === 200) {
+      const divJokes = document.getElementById("joke");
+      const data = JSON.parse(this.responseText);
 
-        divJokes.innerText = `${data.value}`;
-      } else {
-      }
+      divJokes.innerText = `${data.value}`;
+    } else {
+      divJokes.innerText = `something went wrong`;
     }
   };
   xhr.send();
 };
 
 btn.addEventListener("click", norrisJokes);
+document.addEventListener("DOMContentLoaded", norrisJokes);
 
 //using fetch
 
